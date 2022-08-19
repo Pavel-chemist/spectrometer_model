@@ -453,8 +453,7 @@ $(function()
 	}
 	
 	function DrawGrating( CanvasCtx )
-	{
-		
+	{		
 		//angle in degrees, perpendicular to incoming ray is 0
 		//grating width is 3cm, or 300 points
 		//pivot.x = pivot, pivot.y = CRY
