@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<title>Spectrometer</title>
+	<link rel="stylesheet"  type="text/css" href="spectrometer_styles.css" />
+  </head>
+  
+  
+  
+  <body>
+    <div class="title">
+	  Spectrometer model
+	</div>
+    <canvas class="raytrace" id="spectrometer_diagram" width="4000" height="2000"></canvas>
+<!--	<canvas class="image" id="image_of_spectrum" width="600" height="400"></canvas> -->
+	<div class="controls">
+	  <div class="number_input">
+		<div class="control_name">Camera angle, deg:</div>
+		<div class="valueDisplay" id="pivotAngleDisplay"></div>
+		<div id="pivotAngleUp" class="button_little">+1</div>
+		<div id="pivotAngleDown" class="button_little"/>-1</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Grating angle, deg:</div>
+		<div class="valueDisplay" id="gratingAngleDisplay"></div>
+		<div id="gratingAngleUp" class="button_little">+1</div>
+		<div id="gratingAngleDown" class="button_little"/>-1</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Grating density, lines/mm:</div>
+		<div class="valueDisplay" id="gratingDensityDisplay"></div>
+		<div id="gratingDensityUp" class="button_little">+100</div>
+		<div id="gratingDensityDown" class="button_little"/>-100</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Grating distance, mm:</div>
+		<div class="valueDisplay" id="gratingDistanceDisplay"></div>
+		<div id="gratingShiftRight" class="button_little">+1</div>
+		<div id="gratingShiftLeft" class="button_little"/>-1</div>
+		<div id="gratingShiftRight1" class="button_little">+10</div>
+		<div id="gratingShiftLeft1" class="button_little"/>-10</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Camera dist from grating, mm:</div>
+		<div class="valueDisplay" id="cameraDistanceDisplay"></div>
+		<div id="cameraDistanceUp" class="button_little">+1</div>
+		<div id="cameraDistanceUp1" class="button_little">+10</div>
+		<div id="cameraDistanceDown" class="button_little"/>-1</div>
+		<div id="cameraDistanceDown1" class="button_little"/>-10</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Dist. between sensor and lens, mm:</div>
+		<div class="valueDisplay" id="sensorDistanceDisplay"></div>
+		<div id="sensorDistanceFarther" class="button_little">+0.01</div>
+		<div id="sensorDistanceCloser" class="button_little"/>-0.01</div>
+		<div id="sensorDistanceFarther1" class="button_little">+0.1</div>
+		<div id="sensorDistanceCloser1" class="button_little"/>-0.1</div>
+	  </div>
+	   <div class="number_input">
+		<div class="control_name">Focus distance, m:</div>
+		<div class="valueDisplay" id="focusDistanceDisplay"></div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Number of rays:</div>
+		<div class="valueDisplay" id="rayNumDisplay"></div>
+		<div id="rayNumUp" class="button_little">+2</div>
+		<div id="rayNumDown" class="button_little"/>-2</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Number of spectral orders:</div>
+		<div class="valueDisplay" id="orderNumDisplay"></div>
+		<div id="orderNumUp" class="button_little">+1</div>
+		<div id="orderNumDown" class="button_little"/>-1</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Aperture distance, mm:</div>
+		<div class="valueDisplay" id="apertureDisplay"></div>
+		<div id="apertureShiftRight" class="button_little">+1</div>
+		<div id="apertureShiftLeft" class="button_little"/>-1</div>
+		<div id="apertureShiftRight1" class="button_little">+10</div>
+		<div id="apertureShiftLeft1" class="button_little"/>-10</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Aperture width, mm:</div>
+		<div class="valueDisplay" id="apertureWidthDisplay"></div>
+		<div id="apertureWidthUp" class="button_little">+1</div>
+		<div id="apertureWidthDown" class="button_little"/>-1</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Slit distance, mm:</div>
+		<div class="valueDisplay" id="slitDisplay"></div>
+		<div id="slitShiftRight" class="button_little">+1</div>
+		<div id="slitShiftLeft" class="button_little"/>-1</div>
+		<div id="slitShiftRight1" class="button_little">+10</div>
+		<div id="slitShiftLeft1" class="button_little"/>-10</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Slit vertical distance, mm:</div>
+		<div class="valueDisplay" id="slitVdistDisplay"></div>
+		<div id="slitShiftUp" class="button_little">-1</div>
+		<div id="slitShiftDown" class="button_little"/>+1</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Space between spectral lines, nm:</div>
+		<div class="valueDisplay" id="spectralSpacingDisplay"></div>
+		<div id="spectralSpacingUp1" class="button_little">+1</div>
+		<div id="spectralSpacingDown1" class="button_little"/>-1</div>
+		<div id="spectralSpacingUp" class="button_little">+10</div>
+		<div id="spectralSpacingDown" class="button_little"/>-10</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Collimating lens distance, mm:</div>
+		<div class="valueDisplay" id="colLensDistDisplay"></div>
+		<div id="colLensShiftRight" class="button_little">+1</div>
+		<div id="colLensShiftLeft" class="button_little"/>-1</div>
+		<div id="colLensShiftRight1" class="button_little">+10</div>
+		<div id="colLensShiftLeft1" class="button_little"/>-10</div>
+	  </div>
+	  <div class="number_input">
+		<div class="control_name">Collimating lens F dist, mm:</div>
+		<div class="valueDisplay" id="colLensFDistDisplay"></div>
+		<div id="colLensFDistUp" class="button_little">+1</div>
+		<div id="colLensFDistDown" class="button_little"/>-1</div>
+		<div id="colLensFDistUp1" class="button_little">+10</div>
+		<div id="colLensFDistDown1" class="button_little"/>-10</div>
+	  </div>
+	  <div class="number_input">
+	    <div class="control_name">Show sensor image:</div>
+		<div id="showProjection" class="button_little hide">show</div>
+		<div id="hideProjection" class="button_little">hide</div>
+	  </div>
+	</div>
+	<div class="difftable" id="anglesTable">
+	  
+	</div>
+	
+  </body>
+  
+  <script src="jquery-3.5.1.js"></script>
+  <script src="spectrometer_engine.js"></script>
+  
+  
+</html>  
