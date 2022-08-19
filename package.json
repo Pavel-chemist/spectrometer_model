@@ -1,0 +1,26 @@
+{
+  "name": "spectrometer_model",
+  "version": "1.0.0",
+  "description": "model of spectrometer's optical path",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pavel-chemist/spectrometer_model.git"
+  },
+  "keywords": [
+    "electron",
+    "spectrometer"
+  ],
+  "author": "Pavel-chemist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pavel-chemist/spectrometer_model/issues"
+  },
+  "homepage": "https://github.com/Pavel-chemist/spectrometer_model#readme",
+  "devDependencies": {
+    "electron": "^20.0.3"
+  }
+}
